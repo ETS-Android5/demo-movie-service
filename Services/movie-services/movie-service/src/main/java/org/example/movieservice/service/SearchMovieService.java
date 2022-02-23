@@ -79,9 +79,10 @@ public class SearchMovieService {
         }
         // chk is username liked or disliked
         BiFunction<List<Rating>, Boolean, Boolean> biGetLikedOrDislikeDByYou = (list, isChkForLiked) -> {
-            if(isChkForLiked && list.stream().filter(v -> v.getRateBy().equals(username)).anyMatch(v -> v.isRateType())) {
+            Rating rating = list.stream().filter(v -> v.getRateBy().equals(username)).findAny().orElse(null);
+            if(rating!=null && isChkForLiked && rating.isRateType()) {
                 return true;
-            } else if(!isChkForLiked && list.stream().filter(v -> v.getRateBy().equals(username)).anyMatch(v -> !v.isRateType())) {
+            } else if(rating!=null && !isChkForLiked && !rating.isRateType()) {
                 return true;
             }
             return false;
