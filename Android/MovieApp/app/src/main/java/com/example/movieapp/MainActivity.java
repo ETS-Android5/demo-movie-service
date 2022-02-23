@@ -41,8 +41,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         activityMainBinding.setMainViewModel(mainViewModel);
 
         mainViewModel.getUsers().observe(this, users -> {
-            if(users.size()>0) activityMainBinding.btnSearch.setEnabled(true);
-            System.out.println("USER : " + users.get(0));
+            if(users.size()>0) {
+                activityMainBinding.btnSearch.setEnabled(true);
+                System.out.println("USER : " + users.get(0));
+            }
         });
 
         activityMainBinding.btnSearch.setOnClickListener(this);
