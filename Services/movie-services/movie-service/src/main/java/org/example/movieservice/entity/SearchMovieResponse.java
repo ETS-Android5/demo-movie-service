@@ -19,6 +19,15 @@ public class SearchMovieResponse {
     private int totalDislike;
     private boolean isLikedByYou;
     private boolean isDislikedByYou;
+    private String response;
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
 
     public Integer getMovieId() {
         return movieId;

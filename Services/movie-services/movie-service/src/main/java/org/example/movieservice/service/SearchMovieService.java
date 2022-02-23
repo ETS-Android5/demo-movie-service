@@ -98,6 +98,7 @@ public class SearchMovieService {
                 .poster(movie.getPoster())
                 .totalLike(countLike)
                 .totalDislike(countDislike)
+                .response("True")
                 .isLikedByYou(biGetLikedOrDislikeDByYou.apply(ratings, true))
                 .isDislikedByYou(biGetLikedOrDislikeDByYou.apply(ratings, false))
                 .build(),
@@ -115,15 +116,18 @@ public class SearchMovieService {
 
         //chk user rate status
         Optional<Rating> userRating = ratingRepository.findRatingByMovieIdAndRateBy(rating.get().getMovieId(), rating.get().getRateBy());
+
         if(userRating.isPresent()){
-           //if rating status is the same -> undo rating
-            if((rating.get().isRateType() == userRating.get().isRateType()) || (!rating.get().isRateType() == !userRating.get().isRateType())){
-                ratingRepository.deleteById(userRating.get().getId());
-            }
+            ratingRepository.deleteById(userRating.get().getId());
+            //if rating status is the same -> undo rating
            //else rating
+
         }
 
-        ratingRepository.save(rating.get());
+        if(!userRating.isPresent() || !(rating.get().isRateType() == userRating.get().isRateType()) || !(!rating.get().isRateType() == !userRating.get().isRateType())){
+            ratingRepository.save(rating.get());
+        }
+
 
         return new ResponseEntity(HttpStatus.OK);
     }
