@@ -17,17 +17,17 @@ This is a small practice about spring microservices and distributed systems by i
 
 
 ### Overall design
-Eureka - Service Registry and Discovery
-Zipkin - Distributed Tracing
-Spring - The framework then support the microservices
-Docker - Deployment
-Postgres - Database
-pgAdmin - Database UI management tools
-Android - The frontend Application
+- Eureka - Service Registry and Discovery
+- Zipkin - Distributed Tracing
+- Spring - The framework then support the microservices
+- Docker - Deployment
+- Postgres - Database
+- pgAdmin - Database UI management tools
+- Android - The frontend Application
 
 ### Microservices
-movie-service - Search, Remove, Update, Rate Movie
-omdb-service - FEtch data from OMDB Api
+- movie-service - Search, Remove, Update, Rate Movie
+- omdb-service - FEtch data from OMDB Api
 
 ### Flow
 ![backend-diagram](https://user-images.githubusercontent.com/17758393/155372217-f7405e8e-085a-4466-9b6b-9628f1b52743.jpg)
